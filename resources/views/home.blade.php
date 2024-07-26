@@ -16,6 +16,7 @@
 
                     {{ __('You are logged in!') }}
                     <h3>Hello!</h3>
+                    <a href="{{route('admin.projects.index')}}">Go to back office</a>
                 </div>
             </div>
         </div>
