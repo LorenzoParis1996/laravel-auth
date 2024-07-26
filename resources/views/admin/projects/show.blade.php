@@ -10,7 +10,6 @@
       <h5 class="card-title">{{$project->developer}}</h5>
       <p class="card-text">{{$project->release_date}}</p>
       <p class="card-text">{{$project->description}}</p>
-      <a href="{{route('admin.projects.index', $project)}}" class="btn btn-primary">Go back to main page</a>
     </div>
   </div>
 </div>
