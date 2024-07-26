@@ -19,7 +19,7 @@
             <td>{{$project->title}}</td>
             <td>{{$project->developer}}</td>
             <td>{{$project->release_date}}</td>
-            <td><a class="btn btn-primary btn-sm">View</a>
+            <td><a class="btn btn-primary btn-sm" href="{{route('admin.projects.show',$project)}}">View</a>
 
             </td>
           </tr>
