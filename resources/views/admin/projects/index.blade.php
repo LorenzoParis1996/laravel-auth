@@ -20,7 +20,12 @@
             <td>{{$project->developer}}</td>
             <td>{{$project->release_date}}</td>
             <td><a class="btn btn-primary btn-sm" href="{{route('admin.projects.show',$project)}}">View</a>
-
+                <a class="btn btn-info btn-sm" href="{{route('admin.projects.edit',$project)}}">Edit</a>
+                <form action="{{route('admin.projects.destroy', $project)}}" class="d-inline-block" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
             </td>
           </tr>
 

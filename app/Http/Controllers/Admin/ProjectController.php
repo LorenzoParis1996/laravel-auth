@@ -30,6 +30,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'title'=>'required|unique:projects|max:30|min:3',
+            'developer'=>'required|unique:projects|max:30|min:4',
+            'description'=>'required|unique:projects|min:30|max:500',
+            'release_date'=>'required|unique:projects|max:30'
+        ]);
+
+
         $data = $request->all();
         $newProject= new Project($data);
         $newProject-> save();
@@ -47,24 +55,33 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->validate([
+            'title'=>'required|max:30|min:3',
+            'developer'=>'required|max:30|min:4',
+            'description'=>'required|min:30|max:500',
+            'release_date'=>'required|max:30'
+        ]);
+
+        $project-> update($data);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }
